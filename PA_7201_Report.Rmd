@@ -1,0 +1,50 @@
+---
+title: "PA_7201_Report"
+author: "Elliot Greatrix"
+date: "23/11/2020"
+output: pdf_document
+---
+```{r, echo = FALSE}
+library(openair)
+library(tidyverse)
+```
+
+## Executive Summary
+
+# Introduction 
+
+* NO2 
+- What is it 
+- What does it do 
+    Mortality burdens 
+
+* PM2.5 
+- What is it 
+- What does it do 
+    Mortality burdens 
+    
+# Presence of N02 at Heathrow 
+The main aim here is to state that there is an issue at Heathrow, and what that issue is 
+
+* Display long-term time series at HIL and HAR together 
+  Show that while, HAR is closer, the real impact is the M4 which borders the HIL station
+  
+* Bring in other stations for context
+  Maybe a table to show the classifications of the sites used in the study
+  Show that Central London has lower levels of No2 than Hillingdon
+  Similar patterns are seen at sites with similar classification, as would be expected but everything 
+  at Hillingdon is elevated
+  Clearly the shear volume of traffic at Heathrow is having an effect 
+  
+## Seasonal Patterns
+A seasonal pattern has also been realised from the data 
+* Increased traffic during the holiday seasons 
+
+## Wind-related sources
+Wind rose does not necessarily support the case that Heathrow is the problem. It does not show that the source is specifically the M4, and it's increased traffic. However, it does show that there is a prevailing wind from the SW which has the capacity to transport the pollutants from the M$ over Hillingdon 
+
+# Tackling the problem 
+See notes on Notion 
+
+
+  
