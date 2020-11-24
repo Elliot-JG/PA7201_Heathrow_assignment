@@ -16,28 +16,28 @@ aurn_detailed <- importMeta(source = "aurn", all = TRUE)
 aurn_detailed
 
 
-# 3. Load NO2 - > HARLINGTON  ------------------------------------------------------------
+# 3. Load HARLINGTON  ------------------------------------------------------------
 Harlington <- importAURN(
   site = "HRL", 
   year = 2015:2020, 
   meta = TRUE)
 
 
-# 4. Load No2 -> HILLINGDON -----------------------------------------------
+# 4. Load HILLINGDON -----------------------------------------------
 Hillingdon <- importAURN(
   site = "HIL", 
   year = 2015:2020, 
   meta = TRUE)
 
 
-# 5. Time series -> HARLINGTON --------------------------------------------
+# 5. Time series NO2 -> HARLINGTON --------------------------------------------
 timePlot(Harlington, 
          pollutant = c("no2"),
          avg.time = "month",
          y.relation = "free")
 
 
-# 6. Time series -> HILLINGDON ---------------------------------------------
+# 6. Time series NO2 -> HILLINGDON ---------------------------------------------
 timePlot(Hillingdon, 
          pollutant = c("no2"),
          avg.time = "month",
@@ -57,10 +57,13 @@ hrl_hil_subset <- select(hrl_hil, -site)
 ## Pivot data wide
 hrl_hil_wide <- pivot_wider(
   hrl_hil_subset, 
+  
   # Make new column called dates
   id_cols = date, 
+  
   # New column names from the 'code' of the location
   names_from = code, 
+  
   # In these new columns put the values from the old columns no2, pm2.5
   values_from = c("no2", "pm2.5")
   )
@@ -94,7 +97,7 @@ no2_urban_gLondon <- filter(
   end_date == "ongoing"
 )
 
-# Interestingly Hillingdon does not show up in this search, but does.
+# Interestingly Hillingdon does not show up in this search, but Hingley does.
 
 # It's situated SW of a train station, so not affected (too much) by the prevailing 
 # wind but still surrounded by enough infrastructure, and in Greater London for this maybe to be an interesting comparison
@@ -107,25 +110,28 @@ no2_urban_gLondon <- filter(
 
 # Lets import HG4 and Westminster and repeat step 7 
 
-hrl_hil_har_hors_bold <- importAURN(
+NO2_Urban <- importAURN(
   site = c("HRL", "HIL", "HG4", "HORS", "BOLD"), 
   year = 2015:2020)
 
-hrl_hil_har_hors_bold_subset <- select(hrl_hil_har_hors_bold, -site)
+NO2_Urban <- NO2_Urban %>%
+
+  select(-site) %>%
 
 ## Pivot data wide
-hrl_hil_har_hors_bold_wide <- pivot_wider(
-  hrl_hil_har_hors_bold_subset, 
+pivot_wider(
   # Make new column called dates
-  id_cols = date, 
+  id_cols = date,
+  
   # New column names from the 'code' of the location
-  names_from = code, 
+  names_from = code,
+  
   # In these new columns put the values from the old columns no2, pm2.5
-  values_from = c("no2", "pm2.5")
-)
+  values_from = c("no2"))
+
 
 ## Plot HRL, HIL, HG4 and HORS together 
-timePlot(hrl_hil_har_hors_bold_wide, 
+timePlot(NO2_Urban, 
          pollutant = c("no2_HRL", "no2_HIL", "no2_HG4", "no2_HORS", "no2_BOLD"),
          avg.time = "month", 
          group = TRUE,
@@ -154,7 +160,7 @@ timePlot(Hillingdon,
          group = FALSE, 
          ylab = "concentration (ug/m3)")
 
-# 8. Wind rose -> HILLINGDON ----------------------------------------------
+# 10. Wind rose -> HILLINGDON ----------------------------------------------
 
 # Lets see if the wind is having any effect on the increased pollutants at Hillingdon 
 
@@ -164,8 +170,78 @@ pollutionRose(Hillingdon, pollutant = "no2")
 # brings a fair amount of pollution. 
 
 
-# 9. Wind rose -> HARLINGTON ----------------------------------------------
+# 11. Wind rose -> HARLINGTON ----------------------------------------------
 
 pollutionRose(Harlington, pollutant = "no2")
 
 # Same pattern, just less overall pollution
+
+
+# 12. Time series PM2.5 -> HARLINGTON --------------------------------------------
+timePlot(Harlington, 
+         pollutant = c("pm2.5"),
+         avg.time = "month",
+         y.relation = "free")
+
+
+# 14. Comparing PM2.5 -> HARLINGDON, SALFORD AND WESTMINSTER ---------------------------
+PM2.5_Urban <- importAURN(
+  site = c("HRL", "ECCL", "HORS"), 
+  year = 2018:2020, 
+  pollutant = "pm2.5")
+
+# Strip the time from the date column
+# We don't need it and it's confusing things 
+PM2.5_Urban_Years <- format(as.POSIXct(strptime(PM2.5_Urban$date,"%Y-%m-%d %H:%M:%S",tz="")) ,format = "%Y-%m-%d")
+PM2.5_Urban$date <- PM2.5_Urban_Years
+
+# Set date column as 'date'
+PM2.5_Urban$date = as.Date(PM2.5_Urban$date, format = "%Y-%m-%d")
+
+# Make a new date column that we can easily manipulate and use for "mutate"
+PM2.5_Urban$date_month <- format(as.POSIXct(strptime(PM2.5_Urban$date,"%Y-%m-%d",)) ,format = "%Y-%m")
+
+# Re format date column dates to have month at the end 
+# PM2.5_Urban$date <- format(PM2.5_Urban$date, "%Y-%d-%m")
+
+# Prep for mutate by removing Na values 
+PM2.5_Urban <- na.omit(PM2.5_Urban)
+
+# average for each month 
+PM2.5_Urban <- PM2.5_Urban %>%
+  group_by(site, date_month)%>%
+  mutate(avg_pm2.5 = mean(pm2.5))
+
+# Then something maybe like 
+# group_by(avg_pm2.5)
+#   And drop all the 
+
+https://stackoverflow.com/questions/10769640/how-to-remove-repeated-elements-in-a-vector-similar-to-set-in-python
+
+# Plot it up 
+  
+ggplot2::ggplot(
+  data = PM2.5_Urban, 
+  mapping = aes(
+    x = date,
+   format = "%Y-%m-%d",
+    y = avg_pm2.5,
+    colour = site))+
+  geom_line()+
+  scale_x_date(
+    date_breaks = "1 year",
+    date_labels = "%Y") +
+  xlab("Year")+
+  ylab("PM2.5 (ug/m3)")
+  
+
+
+
+timePlot(PM2.5_Urban, 
+         pollutant = c("HRL","ECCL","HORS"),
+         avg.time = "month",
+         group = TRUE,
+         lty = 1, 
+         lwd = c(1, 2, 3),
+         ylab = "PM2.5 (ug/m3)"
+)
