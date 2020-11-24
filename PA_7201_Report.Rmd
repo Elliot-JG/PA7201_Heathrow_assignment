@@ -7,9 +7,17 @@ output: pdf_document
 ```{r, echo = FALSE}
 library(openair)
 library(tidyverse)
+library(knitr)
 ```
 
 ## Executive Summary
+NO2 and PM2.5 were investigated around Heathrow Airport 
+Seasonal patterns were found that correlated with increased periods of travel
+The effects of the NO2 and Pm2.5 was related to the local population using mortality burden reports for each pollutant 
+ These found that....
+Various methods were explored to mitigate further effects
+Immediate action must be taken 
+  through the use of... 
 
 # Introduction 
 
@@ -17,12 +25,18 @@ library(tidyverse)
 - What is it 
 - What does it do 
     Mortality burdens 
+      22,000 attributable deaths
+      252,000 years lost 
 
 * PM2.5 
 - What is it 
 - What does it do 
     Mortality burdens 
-    
+    29,000 attributable deaths
+    330,000 years lost
+
+[Mortality burdens for NO2 and PM2.5](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/734799/COMEAP_NO2_Report.pdf)
+
 # Presence of N02 at Heathrow 
 The main aim here is to state that there is an issue at Heathrow, and what that issue is 
 
@@ -36,7 +50,7 @@ The main aim here is to state that there is an issue at Heathrow, and what that 
   at Hillingdon is elevated
   Clearly the shear volume of traffic at Heathrow is having an effect 
   
-## Seasonal Patterns
+## Seasonal Patterns and travel trends 
 A seasonal pattern has also been realised from the data 
 * Increased traffic during the holiday seasons 
 
