@@ -1,4 +1,3 @@
-
 # 1. Housekeeping ---------------------------------------------------------
 
 ##load libraries needed
@@ -66,7 +65,7 @@ hrl_hil_wide <- pivot_wider(
   
   # In these new columns put the values from the old columns no2, pm2.5
   values_from = c("no2", "pm2.5")
-  )
+)
 
 ## Plot HRL and HIL together 
 timePlot(hrl_hil_wide, 
@@ -115,19 +114,19 @@ NO2_Urban <- importAURN(
   year = 2015:2020)
 
 NO2_Urban <- NO2_Urban %>%
-
+  
   select(-site) %>%
-
-## Pivot data wide
-pivot_wider(
-  # Make new column called dates
-  id_cols = date,
   
-  # New column names from the 'code' of the location
-  names_from = code,
-  
-  # In these new columns put the values from the old columns no2, pm2.5
-  values_from = c("no2"))
+  ## Pivot data wide
+  pivot_wider(
+    # Make new column called dates
+    id_cols = date,
+    
+    # New column names from the 'code' of the location
+    names_from = code,
+    
+    # In these new columns put the values from the old columns no2, pm2.5
+    values_from = c("no2"))
 
 
 ## Plot HRL, HIL, HG4 and HORS together 
@@ -219,12 +218,12 @@ PM2.5_Urban <- PM2.5_Urban %>%
 https://stackoverflow.com/questions/10769640/how-to-remove-repeated-elements-in-a-vector-similar-to-set-in-python
 
 # Plot it up 
-  
+
 ggplot2::ggplot(
   data = PM2.5_Urban, 
   mapping = aes(
     x = date,
-   format = "%Y-%m-%d",
+    format = "%Y-%m-%d",
     y = avg_pm2.5,
     colour = site))+
   geom_line()+
@@ -233,7 +232,7 @@ ggplot2::ggplot(
     date_labels = "%Y") +
   xlab("Year")+
   ylab("PM2.5 (ug/m3)")
-  
+
 
 
 
@@ -245,3 +244,5 @@ timePlot(PM2.5_Urban,
          lwd = c(1, 2, 3),
          ylab = "PM2.5 (ug/m3)"
 )
+
+
