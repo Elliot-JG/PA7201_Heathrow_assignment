@@ -15,4 +15,4 @@ pm2.5_single <- function(location, years){
 }
 
 # Test  
-pm2.5_single("HRL", 2014:2020) 
+pm2.5_single("HRL", 2015:2020) 
