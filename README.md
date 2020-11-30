@@ -40,6 +40,6 @@ The dependencies for the assignment are:
   + An R Markdown version of *Master_code.R*.
   + While I am working in *Master_code.R* now, I predict that the work flow will move over mainly to this file 
 * **GY7201_Greatrix.pdf**
-  + A .pdf file created when *GY7702_Greatrix.Rmd* is executed or *knitted*
+  + A .pdf file created when *GY7201_Greatrix.Rmd* is executed or *knitted*
 * **Archived.R**
   + Archived code that I was too scared to delete at the time
