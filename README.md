@@ -1,6 +1,6 @@
 # PA7201_Heathrow_assignment
 
-* The project is ONGOING (30/11/2020)
+* The project is ONGOING (15/12/2020)
 * Some files and aspects of the project stated in this README will be missing
 
 This is a repository for the [**GY7702 EO of the atmosphere**](https://le.ac.uk/modules/2021/pa7201) assignment at the University of Leicester. 
@@ -35,6 +35,18 @@ The dependencies for the assignment are:
 * **Master_code.R**  
   + In this file you will find experimental sections of code that address the aims of this project
   + Highly commented, raw code with brief comments on the data analysis
+* **no2_dual.R**
+  + A function to plot Nitrogen Dioxide concentrations at 2 stations on the UK AURN Network with a variable date range
+* **no2_single.R**
+  + A function to plot Nitrogen Dioxide at 1 station on the UK AURN Network with a variable date range 
+* **no2_multiple.R**
+  + A function to plot Nitrogen Dioxide at 4 stations on the UK AURN Network with a variable date range
+  + The function can be easily adapted to add more stations 
+* **PM_single.R**
+  + A function to plot PM2.5 at 1 stations on the UK AURN Network with a variable date range 
+* **PM_multiple.R**
+  + A function to plot PM2.5 at 3 stations on the UK AURN Network with a variable date range
+  + The function can be easily adapted to add more stations
 * **GY7201_Greatrix.Rmd** 
   + Report for public and stakeholders
   + An R Markdown version of *Master_code.R*.
