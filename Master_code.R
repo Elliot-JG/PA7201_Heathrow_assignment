@@ -18,14 +18,14 @@ aurn_detailed
 # 3. Load HARLINGTON  ------------------------------------------------------------
 Harlington <- importAURN(
   site = "HRL", 
-  year = 2015:2020, 
+  year = 2004:2020, 
   meta = TRUE)
 
 
 # 4. Load HILLINGDON -----------------------------------------------
 Hillingdon <- importAURN(
   site = "HIL", 
-  year = 2015:2020, 
+  year = 2004:2020, 
   meta = TRUE)
 
 
@@ -157,7 +157,7 @@ timePlot(Hillingdon,
            col = "turquoise4"), 
          lwd = 3, 
          group = FALSE, 
-         ylab = "concentration (ug/m3)")
+         ylab = "no2 (ug/m3)")
 
 # 10. Wind rose -> HILLINGDON ----------------------------------------------
 
@@ -188,4 +188,16 @@ PM2.5_Urban <- importAURN(
   site = c("HRL", "ECCL", "HORS"), 
   year = 2018:2020, 
   pollutant = "pm2.5")
+
+
+# Statistics --------------------------------------------------------------
+
+aqStats(
+  Harlington,
+  pollutant = "no2",
+  type = "site",
+  data.thresh = 0,
+  percentile = c(95, 99),
+  transpose = FALSE,
+)
 
