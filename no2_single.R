@@ -15,4 +15,4 @@ no2_single <- function(location, years){
 }
 
 # Test  
-no2_single("HRL", 2014:2020)  
+no2_single("HIL", 2015:2020)  
