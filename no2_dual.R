@@ -28,12 +28,14 @@ timePlot(stations_wide_names,
          group = TRUE,
          lty = 1,
          
-         date.breaks = 24,
+         #date.breaks = 24,
          
          # Line plot widths
          lwd = c(3, 3),
-         ylab = "no2 (ug/m3)", fontsize = 20)
+         ylab = "no2 (ug/m3)", 
+         fontsize = 30, 
+        date.breaks = 12)
 }
 
 # Example
-no2_dual("HRL", "HIL", "Harlington", "Hillingdon", 1996:2020)
+no2_dual("HRL", "HIL", "Harlington", "West Drayton", 1996:2020)
