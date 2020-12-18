@@ -44,7 +44,7 @@ pm2.5_plot <- function (P1, P2, P3, P1_long, P2_long, P3_long, years){
            # Line plot widths
            lwd = c(3, 3, 3),
            ylab = "pm2.5 (ug/m3)", 
-           fontsize = 20
+           fontsize = 30
   )
   
 }
