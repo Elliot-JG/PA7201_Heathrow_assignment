@@ -11,11 +11,13 @@ pm2.5_single <- function(location, years){
            pollutant = c("pm2.5"),
            avg.time = "month",
            y.relation = "free", 
-           ylab = "pm2.5 (ug/m3)", fontsize = 20, 
+           ylab = "pm2.5 (ug/m3)", 
+           fontsize = 30, 
           
            # Line plot widths
-           lwd = 2)
+           lwd = 3, 
+          date.breaks = 12)
 }
 
 # Test  
-pm2.5_single("HRL", 2010:2020) 
+pm2.5_single("HRL", 2008:2020) 
