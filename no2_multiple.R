@@ -43,7 +43,8 @@ NO2_plot <- function (P1, P2, P3, P4, P1_long, P2_long, P3_long, P4_long, years)
            # Line plot widths
            lwd = c(3, 3, 3, 3),
            ylab = "no2 (ug/m3)", 
-           fontsize = 20 
+           fontsize = 30, 
+           date.breaks = 10,
   )
   
 }
