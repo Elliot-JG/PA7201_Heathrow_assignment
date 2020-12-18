@@ -163,7 +163,10 @@ timePlot(Hillingdon,
 
 # Lets see if the wind is having any effect on the increased pollutants at Hillingdon 
 
-pollutionRose(Hillingdon, pollutant = "no2")
+pollutionRose(Hillingdon, 
+              pollutant = "no2",
+              breaks = c(0, 20, 40, 60, 80, 100),
+              fontsize = 30)
 
 # So a majority of the wind comes from the South West. The wind from the South 
 # brings a fair amount of pollution. 
@@ -171,7 +174,16 @@ pollutionRose(Hillingdon, pollutant = "no2")
 
 # 11. Wind rose -> HARLINGTON ----------------------------------------------
 
-pollutionRose(Harlington, pollutant = "no2")
+pollutionRose(Harlington, 
+              pollutant = "no2",
+              breaks = c(0, 20, 40, 60, 80, 100),
+              fontsize = 30)
+
+
+pollutionRose(Harlington, 
+              pollutant = "pm2.5", 
+              breaks = c(0, 20, 40, 60, 80, 100),
+              fontsize = 30)
 
 # Same pattern, just less overall pollution
 
