@@ -1,13 +1,11 @@
-# PA7201_Heathrow_assignment
-
-* The project is ONGOING (15/12/2020)
-* Some files and aspects of the project stated in this README will be missing
+# PA7201 Heathrow assignment
 
 This is a repository for the [**GY7702 EO of the atmosphere**](https://le.ac.uk/modules/2021/pa7201) assignment at the University of Leicester. 
 The aim of this assignment was to explore air quality at Heathrow Airport through the use of the UK AURN Network, Sentinel 5P and the OpenAir R package. 
-I also delved into functions which streamlined result output and lead to a 'cleaner' and more robust .Rmd file. 
+I also delved into functions which streamlined result output and lead to a 'cleaner' and more efficient process
 
-This assignment is broken down into 4 stages: 
+
+This assignment is broken down into 6 stages: 
 
 1. Import Uk AURN network data 
 2. Isolate Heathrow air quality data 
